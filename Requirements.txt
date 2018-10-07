@@ -1,0 +1,23 @@
+###ANMOL BEHL##
+flask
+requests
+subprocess
+webbrowser
+youtube_dl
+tkinter
+wikipedia
+wolframalpha
+SpeechRecognition
+pyperclip
+gTTS
+google
+pytube
+lxml
+speedtest-cli
+beautifulsoup4
+chatterbot
+
+
+
+
+
