@@ -140,9 +140,11 @@ def main(text):
 
     elif 'meaning' in text or 'define' in text:#search(r'(meaning)|(define)', text):
         speak(getMeaning(text))
+        veronica_notify(getMeaning(text))
 
     elif 'temperature' in text:#search(r'temperature', text):
         speak(getTemperature(text))
+        veronica_notify(getTemperature(text))
 
     elif 'run' in text or 'execute' in text:#search(r'(run)|(execute)', text):
         speak(nautilus.open_gnome(text))
@@ -170,7 +172,8 @@ def main(text):
         speak(lyrics_down(text))
 
     else:
-        search(text)    
+        speak(search(text))
+        veronica_notify(search(text))    
 
     '''else:
         speak(nautilus.gen_file_path(text))'''
