@@ -34,14 +34,12 @@ def update_log(text):   # Updating Microphone Log
 class StopApp(tk.Tk):   # Pause Nancy code
     def __init__(self):
         tk.Tk.__init__(self)
-        self.title("Nancy Stopped")
-        self.button = tk.Button(self, text="Start Nancy", bg="#09C889", fg="white", command=self.on_button)
+        self.title("Veronica Stopped")
+        self.button = tk.Button(self, text="Veronica Nancy", bg="#09C889", fg="white", command=self.on_button)
         self.button.pack()
 
     def on_button(self):
         self.destroy()
-
-
 
 
 

@@ -16,6 +16,7 @@ def listen():
         #recognizer.adjust_for_ambient_noise(source)
         audio = recognizer.listen(source)
 
+
     try:
         #return recognizer.recognize_sphinx(audio)
         return recognizer.recognize_google(audio)
