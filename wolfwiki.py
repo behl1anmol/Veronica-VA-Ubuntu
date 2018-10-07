@@ -1,6 +1,9 @@
 import wolframalpha
 import wikipedia
 import requests
+from AudioIO import speak
+from settings import LOGO_PATH,veronica_notify
+
 
 #creating instance of wolfram alpha
 appId='APER4E-58XJGHAVAK'
@@ -53,9 +56,12 @@ def search_wiki(keyword=''):
 	wikiSummary=str(page.summary.encode('utf-8'))
 	#printing result
 	print(wikiSummary)
+	speak('Here is your result')
+	veronica_notify(wikiSummary)
 #search_wiki(input())
 
 def search(text=''):
+	ret_answer=''
 	print("V.E.R.O.N.I.C.A:Trying Wolframalpha")
 	res=client.query(text)
 	#wolfram cannot resolve the question
@@ -74,13 +80,15 @@ def search(text=''):
 		#extracting results from pod1
 			result=resolveListOrDict(pod1['subpod'])
 			print(result)
+			speak(result)
+			veronica_notify(result)
 		else:
 		#extracting wolfram questions interpretation from pod0
 			question=resolveListOrDict(pod0['subpod'])
 		#removing unnecessary parenthesis
 			question=removeBrackets(question)
 		#searching for response from wikipedia
-			search_wiki(question)
+			ret_answer=search_wiki(question)
 
 '''while True:
 	q=input('V.E.R.O.N.I.C.A :')

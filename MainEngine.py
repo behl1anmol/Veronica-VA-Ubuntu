@@ -4,7 +4,7 @@
 #!/usr/bin/python3
 import notify2, nautilus, sys
 import tkinter as tk
-from notification import veronica_notify
+#from notification import veronica_notify
 #from re import match,search
 from os import chdir
 from saavn import open_saavn
@@ -48,29 +48,6 @@ class StopApp(tk.Tk):   # Pause Nancy code
 
 
 def main(text):
-    #veronica_notify('Virtual Assistant Started')
-    #text = ""
-    #while text != "terminate":
-    #if text == "":
-    #    speak('On your mark sir')
-    #else:
-    #    speak('ready sir')
-
-    #text = "youtube results ok jaanu title song"
-    # mode=input("Press m for VOICE Mode and t for TEXT Mode")
-
-
-    # if mode == 'm':
-    #     speak('listening')
-    #     print('listening')
-    #     text = listen().lower()
-    #     veronica_notify(text)
-    #     print(text)
-
-    # elif mode == 't':
-    #     text = input('V.E.R.O.N.I.C.A => ')
-    #     if text == 'q':
-    #         exit(1)
 
     update_log(text)
 
@@ -142,10 +119,6 @@ def main(text):
         speak(getMeaning(text))
         veronica_notify(getMeaning(text))
 
-    elif 'temperature' in text:#search(r'temperature', text):
-        speak(getTemperature(text))
-        veronica_notify(getTemperature(text))
-
     elif 'run' in text or 'execute' in text:#search(r'(run)|(execute)', text):
         speak(nautilus.open_gnome(text))
         veronica_notify(text)
@@ -171,9 +144,11 @@ def main(text):
     elif 'download lyrics' in text:#search(r'download\s(lyrics)', text):
         speak(lyrics_down(text))
 
+    elif 'temperature' in text or 'wolfram' in text or 'wikipedia' in text:
+        search(text)
+
     else:
-        speak(search(text))
-        veronica_notify(search(text))    
+        speak('say specific command')  
 
     '''else:
         speak(nautilus.gen_file_path(text))'''
