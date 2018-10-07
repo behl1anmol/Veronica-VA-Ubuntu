@@ -1,12 +1,13 @@
 V.E.R.O.N.I.C.A: The Virtual Assistant (For Ubuntu)
-=
 
 ## Team Name
 ```
 SAAY
 ```
 ## CREATOR
+```
 *Anmol Behl
+```
 
 ## Project Description
 ```
