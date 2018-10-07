@@ -6,7 +6,7 @@ SAAY
 ```
 ## CREATOR
 ```
-*Anmol Behl
+Anmol Behl
 ```
 
 ## Project Description

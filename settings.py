@@ -12,8 +12,8 @@ def veronica_notify(text):     #Desktop Notification
 #client = Client(app_id)
 
 LOGO_PATH  = '/home/anmol/VA/Documents/veronica/logo.gif'
-HOME_DIR   = '/home/anmol/VA/home/'
-DRIVE_DIR  = '/home/anmol/VA/media/'
+HOME_DIR   = '/home/anmol/'
+DRIVE_DIR  = '/home/anmol/'
 LOG_DIR    = '/home/anmol/VA/Documents/VLOG/'
 LYRICS_DIR = '/home/anmol/VA/media/Green/Videos/Lyrics/'
 MP3_DIR    = '/home/anmol/VA/media/Green/Music/'

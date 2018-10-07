@@ -11,7 +11,9 @@ def mounted():
     mounted_drives = [DRIVE_DIR+dir+"/" for dir in DRIVES] + [HOME_DIR+'Downloads/',
                                                           HOME_DIR+'Documents/',
                                                           HOME_DIR+'Videos/',
-                                                          HOME_DIR+'Desktop/']
+                                                          HOME_DIR+'Desktop/',
+                                                          HOME_DIR+'projects/',
+                                                          HOME_DIR+'projects/gitlab']
     # Creating command for IGNORE_DIRS
     global except_dirs
     except_dirs = ''
