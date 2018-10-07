@@ -13,17 +13,15 @@ from wolfwiki import search
 import random
 from settings import LOG_DIR, LOGO_PATH, veronica_notify
 from datetime import datetime
-from temperature import getTemperature
 from meaning import getMeaning
-#from browse import get_address
+from browse import get_address
 from youtube import url_Open
 from search import get_result
-#from mp3download import page_link
-#from mp4Download import youtube_link
 from lyrics import lyrics_down
 from AudioIO import speak, listen
 from youtubemp3 import youtube_mp3
 from youtubemp4 import youtube_mp4
+from defaultsearch import get_result_google
 #from subprocess import getoutput
 
 
@@ -128,6 +126,7 @@ def main(text):
 
     elif 'google' in text or 'search' in text:# search(r'(google)|(search)', text):
         speak(get_result(text))
+        veronica_notify('There you go !')
 
     elif 'download audio' in text:
         youtube_mp3(text)
@@ -148,7 +147,8 @@ def main(text):
         search(text)
 
     else:
-        speak('say specific command')  
+        speak(get_result_google(text))
+        veronica_notify('There you go !')  
 
     '''else:
         speak(nautilus.gen_file_path(text))'''
