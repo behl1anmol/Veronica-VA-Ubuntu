@@ -1,6 +1,3 @@
-
-
-
 #!/usr/bin/python3
 import notify2, nautilus, sys
 import tkinter as tk
@@ -35,7 +32,7 @@ class StopApp(tk.Tk):   # Pause Nancy code
     def __init__(self):
         tk.Tk.__init__(self)
         self.title("Veronica Stopped")
-        self.button = tk.Button(self, text="Veronica Nancy", bg="#09C889", fg="white", command=self.on_button)
+        self.button = tk.Button(self, text="Start Veronica", bg="#09C889", fg="white", command=self.on_button)
         self.button.pack()
 
     def on_button(self):

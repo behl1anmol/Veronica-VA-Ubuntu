@@ -8,6 +8,8 @@ from tkinter import ttk
 import math
 from mails import s_mail
 
+
+
 class Application(Frame):
 	#gui application#
 	def __init__(self,master):
@@ -78,16 +80,19 @@ class Application(Frame):
 		text_letter=self.text.get('1.0',END)
 		s_mail(from_address,to_address,subject_text,text_letter)
 
-root=Tk()
-	
-root.title('GMAIL')
-root.geometry('840x625')
-root.attributes('-topmost',True)
-varTo=StringVar(root,value='to_address@gmail.com')
-varFrom=StringVar(root,value='from_address@gmail.com')
-varText_Letter=StringVar()
-varSubject=StringVar(root,value='enter subject')
-varEmail_List=StringVar(root,value='address_email.txt')
-app=Application(root)
+root1=Tk()
 
-root.mainloop()
+	
+root1.title('GMAIL')
+root1.geometry('840x625')
+root1.attributes('-topmost',True)
+varTo=StringVar(root1,value='to_address@gmail.com')
+varFrom=StringVar(root1,value='from_address@gmail.com')
+varText_Letter=StringVar()
+varSubject=StringVar(root1,value='enter subject')
+varEmail_List=StringVar(root1,value='address_email.txt')
+app=Application(root1)
+
+root1.mainloop()
+
+#gmail_open()

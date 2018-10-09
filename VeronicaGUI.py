@@ -1,10 +1,14 @@
 #!/usr/bin/python3
 from tkinter import *
 from tkinter import ttk
+import sys
+import os
+from os import chdir
 from AudioIO import listen, speak
 from MainEngine import main, update_log
 from settings import LOGO_PATH, LOG_DIR
 from _thread import start_new_thread
+
 
 
 def getTextInput():
@@ -37,10 +41,30 @@ def no_log():
 def open_req():
     main('open file requirements')
 
+def callgui():
+    # chdir('/home/anmol/projects/gitlab/Veronica--VA--Ubuntu')
+    os.system('python3 gmailgui.py')
+
+
 
 root = Tk()
 frame = Frame(root, height=100, width=100)
 root.title('V.E.R.O.N.I.C.A')
+
+
+# #def gmail_open():
+    
+# root1=Tk()
+# root1.title('GMAIL')
+# root1.geometry('840x625')
+# root1.attributes('-topmost',True)
+#     # varTo=StringVar(root,value='to_address@gmail.com')
+#     # varFrom=StringVar(root,value='from_address@gmail.com')
+#     # varText_Letter=StringVar()
+#     # varSubject=StringVar(root,value='enter subject')
+#     # varEmail_List=StringVar(root,value='address_email.txt')
+#     #app=Application(root)
+
 
 # Menubar
 menubar = Menu(root)
@@ -84,7 +108,7 @@ btn_search = Button(root, text="Search", width=18, command=getTextInput,
 btn_voInput = Button(root, text="Microphone", width=19, command=getVoInput,
                      bg="#DF0101", fg="white").grid(row=2, column=0)
 
-'''
+
 # Button - Yes
 photo_yes = PhotoImage(file=LOG_DIR+'images/yes.png')
 yes_img = photo_yes.subsample(40, 40)
@@ -96,7 +120,12 @@ photo_no = PhotoImage(file=LOG_DIR+'images/no.png')
 no_img = photo_no.subsample(40, 40)
 btn_voInput = Button(root, text="Unexpected O/P", command=no_log,
                      bg="#DF0101", fg="white", image=no_img).grid(row=3, column=1)
-'''
+
+# Button - gmail
+gmail = Button(root, text="Gmail", width=19, command=callgui,
+                     bg="#DF0101", fg="white").grid(row=4, column=0)
+
+
 
 root.mainloop()
 
