@@ -9,16 +9,11 @@ from MainEngine import main, update_log
 from settings import LOGO_PATH, LOG_DIR
 from _thread import start_new_thread
 import pyglet
+from wolfwiki import search
 
   
-
-# @window.event
-# def on_draw():
-#     window.clear()
-#     animSprite.draw()
-
-
-# train_veronica()
+LOGO1_PATH  = '/home/anmol/VA/Documents/veronica/login.png'
+###################################FUNCTIONS FOR TKINTER GUI#######################################
 
 def getTextInput():
     print(user_command.get())
@@ -55,13 +50,14 @@ def callgui():
     os.system('python3 gmailgui.py')
 
 
-
+####################################DEFINING TKINTER GUI##########################################
 
 
 
 root = Tk()
 frame = Frame(root, height=100, width=100)
 root.title('V.E.R.O.N.I.C.A')
+font=('',14,'italic')
 
 # Menubar
 menubar = Menu(root)
@@ -73,16 +69,39 @@ filemenu.add_separator()
 
 filemenu.add_command(label="Exit", command=root.quit)
 menubar.add_cascade(label="Extras", menu=filemenu)
-menubar.add_cascade(label='extras')
+menubar.add_cascade(label="Logout", menu=filemenu)
+
 
 mb = Menubutton()
 root.config(menu=menubar)
 
-# Label - Logo
-photo = PhotoImage(file=LOGO_PATH)
-Label(root, image=photo).grid(row=0, columnspan=2)
+# # # Label - Logo
+# photo = PhotoImage(file=LOGO1_PATH)
+# Label(root, image=photo).grid(row=0,rowspan=6, columnspan=2)
 
-#Label(root,text = 'TO: ').grid(row=0,column=1,pady=10,padx=10,sticky=E)
+
+#good morning label
+Label(root,font=font,text = '   Good Evening Anmol   ',borderwidth=2,relief="groove").grid(row=0,column=0,columnspan=2)
+
+#weather label
+temp=search('temperature')
+Label(root,font=font,text = '  ' + temp + '  ',borderwidth=2,relief="groove").grid(row=1,column=0,columnspan=2)
+
+#News label
+#news=search('temperature')
+Label(root,font=font,text = '3 Lakh People Evacuated From Coastal Odisha',borderwidth=2,relief="groove").grid(row=2,column=0,columnspan=2)
+
+#Reminder
+Label(root,font=font,text = 'get to work',borderwidth=2,relief="groove").grid(row=3,column=0,columnspan=2)
+
+#textbox
+text=Text(font=('',12),width=40,height=25)
+text.grid(row=0,column=3,rowspan=6,columnspan=2,sticky='nsew')
+
+# scrollb=Scrollbar(command='')
+# scrollb.grid(row=3,rowspan=8,columnspan=1,sticky='nse')
+# text['yscrollcommand']=scrollb.set
+
 
 #Label(root,image=photo).grid(row=4,columnspan=3)
 
@@ -92,36 +111,52 @@ box = ttk.Combobox(root, textvariable=value, state='readonly')
 box['values'] = ('google ', 'play audio ', 'play video ', 'download audio ', 'download video ',
                  'download lyrics ', 'open file ', 'open folder ', 'open drive ', 'execute ', 'browse ')
 box.set("Select Command")
-box.grid(row=1, column=0)
+box.grid(row=7, column=0)
 
 
 # Entry - User Request
 user_command = Entry(root, bd=1)
-user_command.grid(row=1, column=1)
+user_command.grid(row=7, column=1)
 # Button - Search
 btn_search = Button(root, text="Search", width=18, command=getTextInput,
-                    bg="#4169e1", fg="white").grid(row=2, column=1)
+                    bg="#4169e1", fg="white").grid(row=8, column=1)
 
 # Button - Microphone
 btn_voInput = Button(root, text="Microphone", width=19, command=getVoInput,
-                     bg="#DF0101", fg="white").grid(row=2, column=0)
+                     bg="#DF0101", fg="white").grid(row=8, column=0)
 
 
 # Button - Yes
 photo_yes = PhotoImage(file=LOG_DIR+'images/yes.png')
 yes_img = photo_yes.subsample(40, 40)
 btn_voInput = Button(root, text="Expected O/P", command=yes_log,
-                     bg="green", fg="white", image=yes_img).grid(row=3, column=0)
+                     bg="green", fg="white", image=yes_img).grid(row=9, column=0)
 
 # Button - No
 photo_no = PhotoImage(file=LOG_DIR+'images/no.png')
 no_img = photo_no.subsample(40, 40)
 btn_voInput = Button(root, text="Unexpected O/P", command=no_log,
-                     bg="#DF0101", fg="white", image=no_img).grid(row=3, column=1)
+                     bg="#DF0101", fg="white", image=no_img).grid(row=9, column=1)
+
+# Button - gmail
+games = Button(root, text="GAMES", width=19, command='',
+                     bg="green", fg="white").grid(row=9, column=3)
 
 # Button - gmail
 gmail = Button(root, text="Gmail", width=19, command=callgui,
-                     bg="#DF0101", fg="white").grid(row=4, column=0)
+                     bg="#DF0101", fg="white").grid(row=10, column=0)
+
+#Button - facebook
+facebook = Button(root, text="Facebook", width=18, command='',
+                    bg="#4169e1", fg="white").grid(row=10, column=1)
+
+# Button - youtube
+youtube = Button(root, text="Youtube", width=19, command='',
+                     bg="#DF0101", fg="white").grid(row=10, column=3)
+
+# Button - youtube
+instagram = Button(root, text="Instagram", width=19, command='',
+                     bg="grey", fg="white").grid(row=10, column=4)
 
 
 
@@ -138,7 +173,7 @@ try:
     r,g,b,alpha=0.5,0.5,0.8,0.5
 
     pyglet.gl.glClearColor(r,g,b,alpha)
-    pyglet.clock.schedule_once(pyglet.app.exit(),10)
+    pyglet.clock.schedule_once(pyglet.app.exit(),8)
     @window.event
     def on_draw():
         window.clear()

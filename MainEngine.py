@@ -153,7 +153,9 @@ def main(text):
         speak(lyrics_down(text))
 
     elif 'temperature' in text or 'wolfram' in text or 'wikipedia' in text:
-        search(text)
+        temp=search(text)
+        speak(temp)
+        veronica_notify(temp)
 
     elif 'train' in text:
         train_veronica()        

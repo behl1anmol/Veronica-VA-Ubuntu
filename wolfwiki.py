@@ -80,8 +80,9 @@ def search(text=''):
 		#extracting results from pod1
 			result=resolveListOrDict(pod1['subpod'])
 			print(result)
-			speak(result)
-			veronica_notify(result)
+			#speak(result)
+			#veronica_notify(result)
+			return(result)
 		else:
 		#extracting wolfram questions interpretation from pod0
 			question=resolveListOrDict(pod0['subpod'])
