@@ -8,8 +8,17 @@ from AudioIO import listen, speak
 from MainEngine import main, update_log
 from settings import LOGO_PATH, LOG_DIR
 from _thread import start_new_thread
+import pyglet
+
+  
+
+# @window.event
+# def on_draw():
+#     window.clear()
+#     animSprite.draw()
 
 
+# train_veronica()
 
 def getTextInput():
     print(user_command.get())
@@ -42,29 +51,17 @@ def open_req():
     main('open file requirements')
 
 def callgui():
-    # chdir('/home/anmol/projects/gitlab/Veronica--VA--Ubuntu')
+    chdir('/home/anmol/projects/gitlab/Veronica--VA--Ubuntu')
     os.system('python3 gmailgui.py')
+
+
+
 
 
 
 root = Tk()
 frame = Frame(root, height=100, width=100)
 root.title('V.E.R.O.N.I.C.A')
-
-
-# #def gmail_open():
-    
-# root1=Tk()
-# root1.title('GMAIL')
-# root1.geometry('840x625')
-# root1.attributes('-topmost',True)
-#     # varTo=StringVar(root,value='to_address@gmail.com')
-#     # varFrom=StringVar(root,value='from_address@gmail.com')
-#     # varText_Letter=StringVar()
-#     # varSubject=StringVar(root,value='enter subject')
-#     # varEmail_List=StringVar(root,value='address_email.txt')
-#     #app=Application(root)
-
 
 # Menubar
 menubar = Menu(root)
@@ -85,6 +82,8 @@ root.config(menu=menubar)
 photo = PhotoImage(file=LOGO_PATH)
 Label(root, image=photo).grid(row=0, columnspan=2)
 
+#Label(root,text = 'TO: ').grid(row=0,column=1,pady=10,padx=10,sticky=E)
+
 #Label(root,image=photo).grid(row=4,columnspan=3)
 
 # ComboBox - Select Command
@@ -99,7 +98,6 @@ box.grid(row=1, column=0)
 # Entry - User Request
 user_command = Entry(root, bd=1)
 user_command.grid(row=1, column=1)
-
 # Button - Search
 btn_search = Button(root, text="Search", width=18, command=getTextInput,
                     bg="#4169e1", fg="white").grid(row=2, column=1)
@@ -127,6 +125,27 @@ gmail = Button(root, text="Gmail", width=19, command=callgui,
 
 
 
-root.mainloop()
+try:
+    animation=pyglet.image.load_animation(LOGO_PATH)
+    animSprite=pyglet.sprite.Sprite(animation)
+
+    w=animSprite.width
+    h=animSprite.height
+
+
+    window=pyglet.window.Window(width=w,height=h)
+
+    r,g,b,alpha=0.5,0.5,0.8,0.5
+
+    pyglet.gl.glClearColor(r,g,b,alpha)
+    pyglet.clock.schedule_once(pyglet.app.exit(),10)
+    @window.event
+    def on_draw():
+        window.clear()
+        animSprite.draw()
+    pyglet.app.run()
+except:
+    window.close()
+    root.mainloop()  
 
 

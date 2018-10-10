@@ -4,7 +4,7 @@ import tkinter as tk
 #from notification import veronica_notify
 #from re import match,search
 from os import chdir
-from saavn import open_saavn
+from saavn import open_saavn 
 from random import choice
 from wolfwiki import search
 import random
@@ -19,8 +19,22 @@ from AudioIO import speak, listen
 from youtubemp3 import youtube_mp3
 from youtubemp4 import youtube_mp4
 from defaultsearch import get_result_google
+#from chatbot import chat
 #from subprocess import getoutput
 
+# bot=ChatBot(
+#     "Veronica",
+# )
+
+# bot.read_only=True
+# bot.set_trainer(ChatterBotCorpusTrainer)
+
+# def train_veronica():
+#     speak('reintializing training database')
+#     veronica_notify("Reintializing training database")
+#     bot.train(
+#          "chatterbot.corpus.english"
+#     )
 
 def update_log(text):   # Updating Microphone Log
     chdir('/home/anmol/VA/Documents/VLOG')
@@ -141,7 +155,15 @@ def main(text):
     elif 'temperature' in text or 'wolfram' in text or 'wikipedia' in text:
         search(text)
 
+    elif 'train' in text:
+        train_veronica()        
+
     else:
+        # #chat(text)
+        # resp=bot.get_response("hello")
+        # veronica_notify(resp)
+        # speak(resp)
+        #are you satisfied if not redirect to google
         speak(get_result_google(text))
         veronica_notify('There you go !')  
 
