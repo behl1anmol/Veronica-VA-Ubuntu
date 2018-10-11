@@ -35,7 +35,7 @@ from defaultsearch import get_result_google
 #     bot.train(
 #          "chatterbot.corpus.english"
 #     )
-
+reply=''
 def update_log(text):   # Updating Microphone Log
     chdir('/home/anmol/VA/Documents/VLOG')
     with open('microphone_log.txt', 'a') as f:
@@ -74,12 +74,14 @@ def main(text):
     elif "toss a coin" in text:
         coin=random.randint(1,2)
         if coin==1:
+            reply="It is Tails"
             speak('It is tails')
             veronica_notify('It is tails')
         elif coin==2:
             speak('It is heads')
             veronica_notify('It is heads')
-        return
+            reply='It is heads'
+        return reply
 
     elif text in ["throw a dice", "throw a die"]:
         dice=str(random.randint(1,6))
@@ -139,13 +141,18 @@ def main(text):
 
     elif 'download audio' in text:
         youtube_mp3(text)
+        reply='Downloaded audio complete'
+        return reply
 
     elif 'download video' in text:
-        youtube_mp4(text)        
+        youtube_mp4(text)
+        reply='Downloaded video complete' + text 
+        return reply      
 
     elif 'youtube' in text:#search(r'download\s(video)|(mp4)', text):
         speak('starting youtube')
         veronica_notify('starting youtube')
+        reply='Starting Youtube'
         url_Open(text)
         #speak(youtube_link(text[text.find('youtube results of')+len('youtube results of')+1:]))
 

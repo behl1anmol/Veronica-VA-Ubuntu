@@ -10,24 +10,47 @@ from settings import LOGO_PATH, LOG_DIR
 from _thread import start_new_thread
 import pyglet
 from wolfwiki import search
+import webbrowser
+from settings import veronica_notify
 
   
 LOGO1_PATH  = '/home/anmol/VA/Documents/veronica/login.png'
+
+root = Tk()
+frame = Frame(root, height=100, width=100)
+root.title('Veronica')
+font=('',14,'italic')
+
+#textbox
+text=Text(font=('',12),width=40,height=25)
+text.grid(row=0,column=3,rowspan=6,columnspan=2,sticky='nsew')
 ###################################FUNCTIONS FOR TKINTER GUI#######################################
+
+def login():
+    chdir('/home/anmol/projects/gitlab/Veronica--VA--Ubuntu')
+    os.system('python3 vlogin.py')
 
 def getTextInput():
     print(user_command.get())
-    main(user_command.get())
+    text.insert(END,"SIR: ")
+    text.insert(END,user_command.get())
+    text.insert(END,"\n")
+    reply=main(user_command.get())
+    text.insert(END,"Veronica:")
+    text.insert(END,reply)
+
 
 
 def getVoInput():
     box.set('')
     user_command.delete(0, END)
     speak('listening')
-    text = listen().lower()
-    print(text)
-    user_command.insert(0, text)
-    start_new_thread(main, (text,))
+    text1 = listen().lower()
+    print(text1)
+    text.insert(END,text1)
+    text.insert(END,"\n")
+    user_command.insert(0, text1)
+    start_new_thread(main, (text1,))
 
 
 def open_log():
@@ -49,15 +72,35 @@ def callgui():
     chdir('/home/anmol/projects/gitlab/Veronica--VA--Ubuntu')
     os.system('python3 gmailgui.py')
 
+def yt():
+    webbrowser.open_new_tab("http://www.youtube.com")
+    veronica_notify("There You GO!!")
+    text.insert(END,"Veronica:There You Go!!\n")
+    speak("There You Go!!")
+
+
+def fb():
+    webbrowser.open_new_tab("http://www.facebook.com")
+    veronica_notify("There You GO!!")
+    text.insert(END,"Veronica:There You Go!!\n")
+    speak("There You Go!!")
+
+def insta():
+    webbrowser.open_new_tab("http://www.instagram.com")
+    veronica_notify("Veronica:There You GO!!")
+    text.insert(END,"There You Go!!\n")
+    speak("There You Go!!")
+
+
 
 ####################################DEFINING TKINTER GUI##########################################
 
 
 
-root = Tk()
-frame = Frame(root, height=100, width=100)
-root.title('V.E.R.O.N.I.C.A')
-font=('',14,'italic')
+# root = Tk()
+# frame = Frame(root, height=100, width=100)
+# root.title('Veronica')
+# font=('',14,'italic')
 
 # Menubar
 menubar = Menu(root)
@@ -81,22 +124,37 @@ root.config(menu=menubar)
 
 
 #good morning label
-Label(root,font=font,text = '   Good Evening Anmol   ',borderwidth=2,relief="groove").grid(row=0,column=0,columnspan=2)
+Label(root,font=font,text = '   Hello Sir   ',borderwidth=2,relief="groove").grid(row=0,column=0,columnspan=2)
 
+#weather
+Label(root,font=font,text = 'WEATHER').grid(row=1,column=0,columnspan=2)
 #weather label
 temp=search('temperature')
-Label(root,font=font,text = '  ' + temp + '  ',borderwidth=2,relief="groove").grid(row=1,column=0,columnspan=2)
+Label(root,text = '  ' + temp + '  ',borderwidth=2,relief="groove").grid(row=2,column=0,columnspan=2)
 
+#News
+Label(root,font=font,text = 'NEWS').grid(row=3,column=0,columnspan=2)
 #News label
 #news=search('temperature')
-Label(root,font=font,text = '3 Lakh People Evacuated From Coastal Odisha',borderwidth=2,relief="groove").grid(row=2,column=0,columnspan=2)
+Label(root,text = '3 Lakh People Evacuated From Coastal Odisha',borderwidth=2,relief="groove").grid(row=4,column=0,columnspan=2)
 
-#Reminder
-Label(root,font=font,text = 'get to work',borderwidth=2,relief="groove").grid(row=3,column=0,columnspan=2)
 
-#textbox
-text=Text(font=('',12),width=40,height=25)
-text.grid(row=0,column=3,rowspan=6,columnspan=2,sticky='nsew')
+# #Trends
+# #Bitcoin
+# Label(root,font=font,text = 'Trends').grid(row=3,column=0,columnspan=2)
+
+
+#Bitcoin
+Label(root,font=font,text = 'Bitcoin Status').grid(row=5,column=0)
+
+#Bitcoin Button
+btn_bitcoin = Button(root, text="Search", width=18, command='',
+                    bg="yellow", fg="black").grid(row=5, column=1)
+
+# #textbox
+# text=Text(font=('',12),width=40,height=25)
+# text.grid(row=0,column=3,rowspan=6,columnspan=2,sticky='nsew')
+# text.insert(END,"Hello")
 
 # scrollb=Scrollbar(command='')
 # scrollb.grid(row=3,rowspan=8,columnspan=1,sticky='nse')
@@ -106,13 +164,16 @@ text.grid(row=0,column=3,rowspan=6,columnspan=2,sticky='nsew')
 #Label(root,image=photo).grid(row=4,columnspan=3)
 
 # ComboBox - Select Command
-value = StringVar()
-box = ttk.Combobox(root, textvariable=value, state='readonly')
-box['values'] = ('google ', 'play audio ', 'play video ', 'download audio ', 'download video ',
-                 'download lyrics ', 'open file ', 'open folder ', 'open drive ', 'execute ', 'browse ')
-box.set("Select Command")
-box.grid(row=7, column=0)
+# value = StringVar()
+# box = ttk.Combobox(root, textvariable=value, state='readonly')
+# box['values'] = ('google ', 'play audio ', 'play video ', 'download audio ', 'download video ',
+#                  'download lyrics ', 'open file ', 'open folder ', 'open drive ', 'execute ', 'browse ')
+# box.set("Select Command")
+# box.grid(row=7, column=0)
 
+# #Help
+# btn_search = Button(root, text="Help", width=18, command=whatcanido,
+#                     bg="#4169e1", fg="white").grid(row=7, column=0)
 
 # Entry - User Request
 user_command = Entry(root, bd=1)
@@ -126,38 +187,47 @@ btn_voInput = Button(root, text="Microphone", width=19, command=getVoInput,
                      bg="#DF0101", fg="white").grid(row=8, column=0)
 
 
-# Button - Yes
-photo_yes = PhotoImage(file=LOG_DIR+'images/yes.png')
-yes_img = photo_yes.subsample(40, 40)
-btn_voInput = Button(root, text="Expected O/P", command=yes_log,
-                     bg="green", fg="white", image=yes_img).grid(row=9, column=0)
+# # Button - Yes
+# photo_yes = PhotoImage(file=LOG_DIR+'images/yes.png')
+# yes_img = photo_yes.subsample(40, 40)
+# btn_voInput = Button(root, text="Expected O/P", command=yes_log,
+#                      bg="green", fg="white", image=yes_img).grid(row=9, column=0)
 
-# Button - No
-photo_no = PhotoImage(file=LOG_DIR+'images/no.png')
-no_img = photo_no.subsample(40, 40)
-btn_voInput = Button(root, text="Unexpected O/P", command=no_log,
-                     bg="#DF0101", fg="white", image=no_img).grid(row=9, column=1)
+# # Button - No
+# photo_no = PhotoImage(file=LOG_DIR+'images/no.png')
+# no_img = photo_no.subsample(40, 40)
+# btn_voInput = Button(root, text="Unexpected O/P", command=no_log,
+#                      bg="#DF0101", fg="white", image=no_img).grid(row=9, column=1)
 
-# Button - gmail
-games = Button(root, text="GAMES", width=19, command='',
-                     bg="green", fg="white").grid(row=9, column=3)
+# # Button - gmail
+# games = Button(root, text="GAMES", width=19, command='',
+#                      bg="green", fg="white").grid(row=9, column=3)
 
 # Button - gmail
 gmail = Button(root, text="Gmail", width=19, command=callgui,
                      bg="#DF0101", fg="white").grid(row=10, column=0)
 
 #Button - facebook
-facebook = Button(root, text="Facebook", width=18, command='',
+facebook = Button(root, text="Facebook", width=18, command=fb,
                     bg="#4169e1", fg="white").grid(row=10, column=1)
 
 # Button - youtube
-youtube = Button(root, text="Youtube", width=19, command='',
+youtube = Button(root, text="Youtube", width=19, command=yt,
                      bg="#DF0101", fg="white").grid(row=10, column=3)
 
 # Button - youtube
-instagram = Button(root, text="Instagram", width=19, command='',
+instagram = Button(root, text="Instagram", width=19, command=insta,
                      bg="grey", fg="white").grid(row=10, column=4)
 
+def whatcanido():
+    text.insert(END,"VERONICA:\nThere lots of think i can help you with...\n\n1)Daily news\n2)Browse websites\n3)Download Audio\n4)Download video\nand many more...\nJust tap the microphone\nOr type the text")
+    veronica_notify("There lots of think i can help you with...\n\n1)Daily news\n2)Browse websites\n3)Download Audio\n4)Download video\nand many more...\nJust tap the microphone or type the text")
+    speak("There lots of think i can help you with,Just tap the microphone or type the text")
+
+#Help
+btn_vhelp = Button(root, text="Help", width=18, command=whatcanido,
+                    bg="#4169e1", fg="white").grid(row=7, column=0)    
+login()
 
 
 try:
@@ -181,6 +251,9 @@ try:
     pyglet.app.run()
 except:
     window.close()
+    speak("Hello sir,here is some daily info for you")
+    veronica_notify("Hello sir,here is some daily info for you")
+    text.insert(END,"Hello Sir,here is some daily info for you\n")
     root.mainloop()  
 
 
