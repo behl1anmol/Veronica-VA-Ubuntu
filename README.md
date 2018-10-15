@@ -1,9 +1,6 @@
 V.E.R.O.N.I.C.A: The Virtual Assistant (For Ubuntu)
 
-## Team Name
-```
-SAAY
-```
+
 ## CREATOR
 ```
 Anmol Behl
@@ -13,7 +10,7 @@ Anmol Behl
 ```
 Now-a-days, no doubt there are many virtual assistants available in market but none of them are cross platform
 and open source which limits their capabilities and scope. Nancy will be a python powered virtual assistant to
-be available cross platform.Nancy reduces work load and help you with your basic day to day computer based tasks
+be available cross platform.Veronica reduces work load and help you with your basic day to day computer based tasks
 by automating them and reducing human efforts.It is a voice controlled VA which automates the boring stuff as it
 mingles with your hard drive and gives the user facility of working with files vocally.User can work with their
 machine both offline & online without getting their fingers on keyboard.   Users can get movie ratings,

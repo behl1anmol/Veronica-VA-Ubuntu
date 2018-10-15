@@ -35,14 +35,15 @@ def getTextInput():
     text.insert(END,"SIR: ")
     text.insert(END,user_command.get())
     text.insert(END,"\n")
-    reply=main(user_command.get())
+    # reply=main(user_command.get())
     text.insert(END,"Veronica:")
+    reply=main(user_command.get())
     text.insert(END,reply)
 
 
 
 def getVoInput():
-    box.set('')
+    #box.set('')
     user_command.delete(0, END)
     speak('listening')
     text1 = listen().lower()
