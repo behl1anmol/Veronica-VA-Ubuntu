@@ -37,20 +37,20 @@ class Application(Frame):
 		#combobox for to
 		#column 1
 		self.cbToEmail=ttk.Combobox(self,font=font,width=40,textvariable=varTo)
-		self.cbToEmail['values']=('anmol.1721cs1039@kiet.edu','veronica_VA@gmail.com')
+		self.cbToEmail['values']=('anmol.1721cs1039@kiet.edu','behl1anmol@gmail.com')
 		self.cbToEmail.grid(row=1,column=1,pady=10,padx=10)
 
-		#row 2
-		#column 0
-		#sender
+		# #row 2
+		# #column 0
+		# #sender
 		
-		self.sender=Label(self,font=font,text='FROM: ').grid(row=2,column=0,pady=10,padx=10,sticky=E)
+		# self.sender=Label(self,font=font,text='FROM: ').grid(row=2,column=0,pady=10,padx=10,sticky=E)
 
-		#combobox for from
-		#column 1
-		self.cbFromEmail=ttk.Combobox(self,font=font,width=40,textvariable=varFrom)
-		self.cbFromEmail['values']=('','')
-		self.cbFromEmail.grid(row=2,column=1,pady=10,padx=10)
+		# #combobox for from
+		# #column 1
+		# self.cbFromEmail=ttk.Combobox(self,font=font,width=40,textvariable=varFrom)
+		# self.cbFromEmail['values']=('','')
+		# self.cbFromEmail.grid(row=2,column=1,pady=10,padx=10)
 
 		#row 3
 		#column 0
@@ -74,11 +74,11 @@ class Application(Frame):
 		self.text['yscrollcommand']=self.scrollb.set
 
 	def send_mail(self):
-		from_address=varFrom.get()
+		#from_address=varFrom.get()
 		to_address=varTo.get()
 		subject_text=varSubject.get()
 		text_letter=self.text.get('1.0',END)
-		s_mail(from_address,to_address,subject_text,text_letter)
+		s_mail('veronica.va.ubuntu@gmail.com',to_address,subject_text,text_letter)
 
 root1=Tk()
 
@@ -87,7 +87,7 @@ root1.title('GMAIL')
 root1.geometry('840x625')
 root1.attributes('-topmost',True)
 varTo=StringVar(root1,value='to_address@gmail.com')
-varFrom=StringVar(root1,value='from_address@gmail.com')
+#varFrom=StringVar(root1,value='from_address@gmail.com')
 varText_Letter=StringVar()
 varSubject=StringVar(root1,value='enter subject')
 varEmail_List=StringVar(root1,value='address_email.txt')

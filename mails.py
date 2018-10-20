@@ -1,5 +1,7 @@
 from flask import Flask
 from flask_mail import Mail, Message
+from AudioIO import listen, speak
+from settings import veronica_notify
 #import os
 
 app = Flask(__name__)
@@ -18,7 +20,7 @@ def s_mail(mail_S,mail_R,mail_Sub,mail_M):
       "MAIL_USE_TLS": False,
       "MAIL_USE_SSL": True,
       "MAIL_USERNAME": mail_S,
-      "MAIL_PASSWORD": 'NERLJN*#1234'
+      "MAIL_PASSWORD": 'veronica1311'
   }
 
   app.config.update(mail_settings)
@@ -31,7 +33,10 @@ def s_mail(mail_S,mail_R,mail_Sub,mail_M):
                     sender=app.config.get("MAIL_USERNAME"),
                     recipients=[mail_R], # replace with your email for testing
                     body=mail_M)
-      print('sending mail')
+      say('sending mail')
+      veronica_notify('Sending Mail')
       mail.send(msg)
+      speak("Mail Send")
+      veronica_notify("Mail Send")
 
 #s_mail()

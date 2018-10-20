@@ -154,6 +154,7 @@ def main(text):
         veronica_notify('starting youtube')
         reply='Starting Youtube'
         url_Open(text)
+        return reply
         #speak(youtube_link(text[text.find('youtube results of')+len('youtube results of')+1:]))
 
     elif 'download lyrics' in text:#search(r'download\s(lyrics)', text):

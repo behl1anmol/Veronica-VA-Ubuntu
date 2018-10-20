@@ -32,6 +32,7 @@ def login():
 
 def getTextInput():
     print(user_command.get())
+    text.insert(END,"\n")
     text.insert(END,"SIR: ")
     text.insert(END,user_command.get())
     text.insert(END,"\n")
@@ -221,7 +222,7 @@ instagram = Button(root, text="Instagram", width=19, command=insta,
                      bg="grey", fg="white").grid(row=10, column=4)
 
 def whatcanido():
-    text.insert(END,"VERONICA:\nThere lots of think i can help you with...\n\n1)Daily news\n2)Browse websites\n3)Download Audio\n4)Download video\nand many more...\nJust tap the microphone\nOr type the text")
+    text.insert(END,"\nVERONICA:\nThere lots of think i can help you with...\n\n1)Daily news\n2)Browse websites\n3)Download Audio\n4)Download video\nand many more...\nJust tap the microphone\nOr type the text")
     veronica_notify("There lots of think i can help you with...\n\n1)Daily news\n2)Browse websites\n3)Download Audio\n4)Download video\nand many more...\nJust tap the microphone or type the text")
     speak("There lots of think i can help you with,Just tap the microphone or type the text")
 
@@ -254,7 +255,7 @@ except:
     window.close()
     speak("Hello sir,here is some daily info for you")
     veronica_notify("Hello sir,here is some daily info for you")
-    text.insert(END,"Hello Sir,here is some daily info for you\n")
+    text.insert(END,"Veronica:Hello Sir,here is some daily info for you\n")
     root.mainloop()  
 
 
