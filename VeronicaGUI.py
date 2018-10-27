@@ -46,6 +46,7 @@ def getTextInput():
     reply=main(vs)
     text.insert(END,reply)
     vs=''
+    rerply=''
 
 
 

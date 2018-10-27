@@ -19,6 +19,7 @@ from AudioIO import speak, listen
 from youtubemp3 import youtube_mp3
 from youtubemp4 import youtube_mp4
 from defaultsearch import get_result_google
+from nautilus import open_gnome
 #from chatbot import chat
 #from subprocess import getoutput
 
@@ -166,7 +167,11 @@ def main(text):
         veronica_notify(temp)
 
     elif 'train' in text:
-        train_veronica()        
+        train_veronica()
+
+    elif 'lock' in text:
+        open_gnome(text)
+        return 'locking now'            
 
     else:
         # #chat(text)
