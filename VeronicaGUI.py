@@ -12,6 +12,9 @@ import pyglet
 from wolfwiki import search
 import webbrowser
 from settings import veronica_notify
+from taggingwords import content
+
+vs=''
 
   
 LOGO1_PATH  = '/home/anmol/VA/Documents/veronica/login.png'
@@ -32,15 +35,17 @@ def login():
     os.system('python3 vlogin.py')
 
 def getTextInput():
-    print(user_command.get())
+    vs=content(user_command.get())
+    print(vs)
     text.insert(END,"\n")
     text.insert(END,"SIR: ")
-    text.insert(END,user_command.get())
+    text.insert(END,vs)
     text.insert(END,"\n")
     # reply=main(user_command.get())
     text.insert(END,"Veronica:")
-    reply=main(user_command.get())
+    reply=main(vs)
     text.insert(END,reply)
+    vs=''
 
 
 
@@ -190,7 +195,7 @@ btn_voInput = Button(root, text="Microphone", width=19, command=getVoInput,
                      bg="#DF0101", fg="white").grid(row=8, column=0,padx=(600,10))
 
 #Button-logout
-btn_logout = Button(root, text="Logout", width=18, command='',
+btn_logout = Button(root, text="Close", width=18, command=root.destroy,
                     bg="#4169e1", fg="white").grid(row=7, column=3)
 
 #Button-games
