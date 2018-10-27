@@ -18,12 +18,13 @@ LOGO1_PATH  = '/home/anmol/VA/Documents/veronica/login.png'
 
 root = Tk()
 frame = Frame(root, height=100, width=100)
+root.wm_attributes('-fullscreen','true')
 root.title('Veronica')
 font=('',14,'italic')
 
 #textbox
 text=Text(font=('',12),width=40,height=25)
-text.grid(row=0,column=3,rowspan=6,columnspan=2,sticky='nsew')
+text.grid(row=0,column=3,rowspan=6,columnspan=2,sticky='nsew',padx=(42,0),pady=(200,50))
 ###################################FUNCTIONS FOR TKINTER GUI#######################################
 
 def login():
@@ -126,19 +127,19 @@ root.config(menu=menubar)
 
 
 #good morning label
-Label(root,font=font,text = '   Hello Sir   ',borderwidth=2,relief="groove").grid(row=0,column=0,columnspan=2)
+Label(root,font=font,text = '   Hello Sir   ',borderwidth=2,relief="groove").grid(row=0,column=0,columnspan=2,padx=(500,0),pady=(200,50))
 
 #weather
-Label(root,font=font,text = 'WEATHER').grid(row=1,column=0,columnspan=2)
+Label(root,font=font,text = 'WEATHER').grid(row=1,column=0,columnspan=2,padx=(500,0))
 #weather label
 temp=search('temperature')
-Label(root,text = '  ' + temp + '  ',borderwidth=2,relief="groove").grid(row=2,column=0,columnspan=2)
+Label(root,text = '  ' + temp + '  ',borderwidth=2,relief="groove").grid(row=2,column=0,columnspan=2,padx=(500,0))
 
 #News
-Label(root,font=font,text = 'NEWS').grid(row=3,column=0,columnspan=2)
+Label(root,font=font,text = 'NEWS').grid(row=3,column=0,columnspan=2,padx=(500,0))
 #News label
 #news=search('temperature')
-Label(root,text = '3 Lakh People Evacuated From Coastal Odisha',borderwidth=2,relief="groove").grid(row=4,column=0,columnspan=2)
+Label(root,text = '3 Lakh People Evacuated From Coastal Odisha',borderwidth=2,relief="groove").grid(row=4,column=0,columnspan=2,padx=(500,0))
 
 
 # #Trends
@@ -147,11 +148,11 @@ Label(root,text = '3 Lakh People Evacuated From Coastal Odisha',borderwidth=2,re
 
 
 #Bitcoin
-Label(root,font=font,text = 'Bitcoin Status').grid(row=5,column=0)
+Label(root,font=font,text = 'Bitcoin Status').grid(row=8,column=3)
 
 #Bitcoin Button
 btn_bitcoin = Button(root, text="Search", width=18, command='',
-                    bg="yellow", fg="black").grid(row=5, column=1)
+                    bg="yellow", fg="black").grid(row=8, column=4)
 
 # #textbox
 # text=Text(font=('',12),width=40,height=25)
@@ -186,7 +187,15 @@ btn_search = Button(root, text="Search", width=18, command=getTextInput,
 
 # Button - Microphone
 btn_voInput = Button(root, text="Microphone", width=19, command=getVoInput,
-                     bg="#DF0101", fg="white").grid(row=8, column=0)
+                     bg="#DF0101", fg="white").grid(row=8, column=0,padx=(600,10))
+
+#Button-logout
+btn_logout = Button(root, text="Logout", width=18, command='',
+                    bg="#4169e1", fg="white").grid(row=7, column=3)
+
+#Button-games
+btn_play = Button(root, text="Games", width=18, command='',
+                    bg="green", fg="white").grid(row=7, column=4)
 
 
 # # Button - Yes
@@ -207,7 +216,7 @@ btn_voInput = Button(root, text="Microphone", width=19, command=getVoInput,
 
 # Button - gmail
 gmail = Button(root, text="Gmail", width=19, command=callgui,
-                     bg="#DF0101", fg="white").grid(row=10, column=0)
+                     bg="#DF0101", fg="white").grid(row=10, column=0,padx=(600,10))
 
 #Button - facebook
 facebook = Button(root, text="Facebook", width=18, command=fb,
@@ -228,7 +237,7 @@ def whatcanido():
 
 #Help
 btn_vhelp = Button(root, text="Help", width=18, command=whatcanido,
-                    bg="#4169e1", fg="white").grid(row=7, column=0)    
+                    bg="#4169e1", fg="white").grid(row=7, column=0,padx=(600,10))    
 login()
 
 
