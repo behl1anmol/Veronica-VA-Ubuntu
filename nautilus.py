@@ -152,10 +152,14 @@ def open_gnome(text):
     try:
         if 'system monitor' in text:
             thread(process, ('gnome-system-monitor',))
+        elif 'vlc' in text:
+            thread(process, ('vlc',))
+        if 'nautilus' in text:
+            thread(process, ('nautilus',))      
         elif 'terminal' in text:
             thread(process, ('gnome-terminal',))
         elif 'python' in text or 'shell' in text:
-            thread(process, ('python3 -m idlelib.idle',))
+            thread(process, ('python3',))
         elif 'pycharm' in text:
             thread(process, ('./"../Documents/pycharm-2016.1.4/bin/pycharm.sh"',))
         elif 'lock' in text:

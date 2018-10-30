@@ -33,7 +33,7 @@ def s_mail(mail_S,mail_R,mail_Sub,mail_M):
                     sender=app.config.get("MAIL_USERNAME"),
                     recipients=[mail_R], # replace with your email for testing
                     body=mail_M)
-      say('sending mail')
+      speak('sending mail')
       veronica_notify('Sending Mail')
       mail.send(msg)
       speak("Mail Send")

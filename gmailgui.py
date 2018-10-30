@@ -10,6 +10,7 @@ from mails import s_mail
 
 
 
+
 class Application(Frame):
 	#gui application#
 	def __init__(self,master):
@@ -84,7 +85,7 @@ root1=Tk()
 
 	
 root1.title('GMAIL')
-root1.geometry('840x625')
+root1.geometry('1000x900')
 root1.attributes('-topmost',True)
 varTo=StringVar(root1,value='to_address@gmail.com')
 #varFrom=StringVar(root1,value='from_address@gmail.com')

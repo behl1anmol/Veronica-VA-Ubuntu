@@ -46,7 +46,7 @@ def getTextInput():
     reply=main(vs)
     text.insert(END,reply)
     vs=''
-    rerply=''
+    reply=''
 
 
 
@@ -80,6 +80,10 @@ def open_req():
 def callgui():
     chdir('/home/anmol/projects/gitlab/Veronica--VA--Ubuntu')
     os.system('python3 gmailgui.py')
+
+def callguigame():
+    chdir('/home/anmol/projects/gitlab/Veronica--VA--Ubuntu')
+    os.system('python3 snake.py')
 
 def yt():
     webbrowser.open_new_tab("http://www.youtube.com")
@@ -133,56 +137,29 @@ root.config(menu=menubar)
 
 
 #good morning label
-Label(root,font=font,text = '   Hello Sir   ',borderwidth=2,relief="groove").grid(row=0,column=0,columnspan=2,padx=(500,0),pady=(200,50))
+Label(root,font=font,text = '   Sweet Dreams   ',borderwidth=2,relief="groove",fg='white',bg='pink').grid(row=0,column=0,columnspan=2,padx=(500,0),pady=(200,50))
 
 #weather
-Label(root,font=font,text = 'WEATHER').grid(row=1,column=0,columnspan=2,padx=(500,0))
+Label(root,font=font,text = '    WEATHER    ',bg='blue',fg='white').grid(row=1,column=0,columnspan=2,padx=(500,0))
 #weather label
 temp=search('temperature')
-Label(root,text = '  ' + temp + '  ',borderwidth=2,relief="groove").grid(row=2,column=0,columnspan=2,padx=(500,0))
+Label(root,text = '  ' + temp + '  ',borderwidth=2,relief="groove",bg='blue',fg='white').grid(row=2,column=0,columnspan=2,padx=(500,0))
 
 #News
-Label(root,font=font,text = 'NEWS').grid(row=3,column=0,columnspan=2,padx=(500,0))
+Label(root,font=font,text = '    NEWS    ',bg='red',fg='white').grid(row=3,column=0,columnspan=2,padx=(500,0))
 #News label
 #news=search('temperature')
-Label(root,text = '3 Lakh People Evacuated From Coastal Odisha',borderwidth=2,relief="groove").grid(row=4,column=0,columnspan=2,padx=(500,0))
+Label(root,text = '3 Lakh People Evacuated From Coastal Odisha',bg='red',fg='white',borderwidth=2,relief="groove").grid(row=4,column=0,columnspan=2,padx=(500,0))
 
 
-# #Trends
-# #Bitcoin
-# Label(root,font=font,text = 'Trends').grid(row=3,column=0,columnspan=2)
-
-
-#Bitcoin
-Label(root,font=font,text = 'Bitcoin Status').grid(row=8,column=3)
+#player
+btn_player = Button(root, text="Songs", width=18, command='',
+                    bg="#4169e1", fg="white").grid(row=8, column=3)
 
 #Bitcoin Button
-btn_bitcoin = Button(root, text="Search", width=18, command='',
+btn_bitcoin = Button(root, text="Bitcoin Status", width=18, command='',
                     bg="yellow", fg="black").grid(row=8, column=4)
 
-# #textbox
-# text=Text(font=('',12),width=40,height=25)
-# text.grid(row=0,column=3,rowspan=6,columnspan=2,sticky='nsew')
-# text.insert(END,"Hello")
-
-# scrollb=Scrollbar(command='')
-# scrollb.grid(row=3,rowspan=8,columnspan=1,sticky='nse')
-# text['yscrollcommand']=scrollb.set
-
-
-#Label(root,image=photo).grid(row=4,columnspan=3)
-
-# ComboBox - Select Command
-# value = StringVar()
-# box = ttk.Combobox(root, textvariable=value, state='readonly')
-# box['values'] = ('google ', 'play audio ', 'play video ', 'download audio ', 'download video ',
-#                  'download lyrics ', 'open file ', 'open folder ', 'open drive ', 'execute ', 'browse ')
-# box.set("Select Command")
-# box.grid(row=7, column=0)
-
-# #Help
-# btn_search = Button(root, text="Help", width=18, command=whatcanido,
-#                     bg="#4169e1", fg="white").grid(row=7, column=0)
 
 # Entry - User Request
 user_command = Entry(root, bd=1)
@@ -200,7 +177,7 @@ btn_logout = Button(root, text="Close", width=18, command=root.destroy,
                     bg="#4169e1", fg="white").grid(row=7, column=3)
 
 #Button-games
-btn_play = Button(root, text="Games", width=18, command='',
+btn_play = Button(root, text="Play Game", width=18, command=callguigame,
                     bg="green", fg="white").grid(row=7, column=4)
 
 

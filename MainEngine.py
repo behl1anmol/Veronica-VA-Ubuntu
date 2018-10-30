@@ -20,6 +20,8 @@ from youtubemp3 import youtube_mp3
 from youtubemp4 import youtube_mp4
 from defaultsearch import get_result_google
 from nautilus import open_gnome
+from optimizingsent import fetch
+from maps import mapopen
 #from chatbot import chat
 #from subprocess import getoutput
 
@@ -100,7 +102,7 @@ def main(text):
         veronica_notify('Suspending')
         return 'pause'
 
-    elif text in ["didn't get you", "terminate"]:
+    elif text in ["didn't get you", "terminate",'bye','bye bye']:
         if text == "terminate":
             veronica_notify('Virtual Assistant Exited')
             speak("Bye Bye")
@@ -169,10 +171,18 @@ def main(text):
     elif 'train' in text:
         train_veronica()
 
-    elif 'lock' in text:
-        open_gnome(text)
-        return 'locking now'            
+    elif 'vlc' in text or 'terminal' in  text or 'python' in text or 'lock' in text or 'reboot' in text or 'saavn' in text or 'shutdown' in text or 'system monitor' in text:
+        nautilus.open_gnome(text)
+        return 'there you go'
 
+    elif 'navigate' in text or 'place' in text or 'locate' in text:
+        fetched=fetch(text)
+        mapopen(fetched)
+        return 'opening maps'
+
+    elif 'nearby' in text or 'find some' in text or 'shop' in text:
+        mapopen(text)
+        return 'I have found some info for you'          
     else:
         # #chat(text)
         # resp=bot.get_response("hello")
