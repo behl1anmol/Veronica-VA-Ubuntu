@@ -5,6 +5,7 @@ V.E.R.O.N.I.C.A: The Virtual Assistant (For Ubuntu)
 ```
 Anmol Behl
 ```
+![Images](start_screen.jpg)
 
 ## Project Description
 ```
