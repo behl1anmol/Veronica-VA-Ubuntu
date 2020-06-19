@@ -5,8 +5,6 @@ V.E.R.O.N.I.C.A: The Virtual Assistant (For Ubuntu)
 ```
 Anmol Behl
 ```
-![Images](start_screen.png)
-
 ## Project Description
 ```
 Now-a-days, no doubt there are many virtual assistants available in market but none of them are cross platform
